@@ -1,0 +1,5 @@
+mountpoints:
+  /:
+    url: https://author-p133185-e1320482.adobeaemcloud.com/bin/franklin.delivery/asisa-softtek/asisa-pocc/main
+    type: "markup"
+    suffix: ".html"
