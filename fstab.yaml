@@ -1,5 +1,5 @@
 mountpoints:
-  /:
-    url: https://author-p133185-e1320482.adobeaemcloud.com/bin/franklin.delivery/asisa-softtek/asisa-pocc/main
-    type: "markup"
-    suffix: ".html"
+  /: https://drive.google.com/drive/folders/1G6Up3BpV5-RsBq4px-CIF5ov9G0TRnrR
+proxies:
+  - path: /poke-data
+    origin: https://pokeapi.co/api/v2/
