@@ -1,0 +1,63 @@
+.pokemon-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+/* Efecto Cristal */
+.pokemon-card .poke-card-inner {
+  background-color: rgba(255, 255, 255, 0.6); 
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+}
+
+.pokemon-card .poke-card-inner:hover {
+  background-color: rgba(255, 255, 255, 0.8); 
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Tipografía y Meta */
+.pokemon-card .poke-card-inner img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+}
+
+.pokemon-card h3 {
+  color: #1E293B; /* Títulos: Slate-800 */
+  margin: 0.5rem 0 1rem 0;
+  text-transform: capitalize;
+}
+
+.pokemon-card .meta {
+  color: #94A3B8; /* Etiquetas/Meta: Slate-400 */
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Botón de Acción */
+.pokemon-card .action-btn {
+  background-color: #10B981; /* Primario: Emerald-500 */
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 100%;
+}
+
+.pokemon-card .action-btn:hover {
+  background-color: #059669; /* Hover: Emerald-600 */
+}
