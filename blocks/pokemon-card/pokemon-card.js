@@ -1,37 +1,28 @@
 export default async function decorate(block) {
-  console.log("pokemon-card loaded");
+  // 1. En Franklin, block.firstElementChild es la fila que contiene las celdas
+  const cols = [...block.firstElementChild.children];
 
-  // 1. Obtenemos la primera fila de datos (la que está debajo del título de la tabla)
-  const row = block.children[0];
-  if (!row) return;
-
-  // 2. Extraemos el texto de cada una de las columnas
-  const pokemonNames = [...row.children].map(col => col.textContent.trim().toLowerCase());
-
-  // 3. Limpiamos el bloque para inyectar nuestro HTML
+  // 2. Limpiamos el bloque completo antes de inyectar las tarjetas
   block.textContent = '';
 
-  // 4. Iteramos sobre cada nombre encontrado
-  for (const pokemonName of pokemonNames) {
-    // Si la celda estaba vacía, creamos una columna vacía para mantener el layout
-    if (!pokemonName) {
-      const emptyCol = document.createElement('div');
-      emptyCol.className = 'poke-col empty';
-      block.append(emptyCol);
-      continue;
-    }
+  // 3. Iteramos sobre cada celda individualmente
+  for (const col of cols) {
+    const pokemonName = col.textContent.trim().toLowerCase();
+
+    // Si la celda está vacía, la saltamos
+    if (!pokemonName) continue;
 
     const colWrapper = document.createElement('div');
     colWrapper.className = 'poke-col';
 
     try {
-      // Usamos el middleware configurado para resolver la ruta /poke-data/
+      // 4. Llamada individual al proxy
       const resp = await fetch(`/poke-data/pokemon/${pokemonName}`);
-      if (!resp.ok) throw new Error('No encontrado');
+      if (!resp.ok) throw new Error('Pokemon no encontrado');
 
       const data = await resp.json();
 
-      // Construimos el HTML aplicando los fondos de UI de cristal y colores corporativos
+      // 5. Estructura de la tarjeta con clases para aplicar el efecto cristal
       const card = document.createElement('div');
       card.className = 'poke-card-inner';
       card.innerHTML = `
@@ -43,9 +34,10 @@ export default async function decorate(block) {
 
       colWrapper.append(card);
     } catch (error) {
+      // Ahora el error mostrará correctamente cada nombre por separado
       colWrapper.innerHTML = `
         <div class="poke-card-inner error">
-          <p class="meta">Error al cargar: ${pokemonName}</p>
+          <p class="meta">Error al cargar a ${pokemonName}</p>
         </div>`;
     }
 
