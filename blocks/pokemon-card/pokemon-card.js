@@ -17,7 +17,7 @@ export default async function decorate(block) {
 
     try {
       // 4. Llamada individual al proxy
-      const resp = await fetch(`/poke-data/pokemon/${pokemonName}`);
+      const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
       if (!resp.ok) throw new Error('Pokemon no encontrado');
 
       const data = await resp.json();
