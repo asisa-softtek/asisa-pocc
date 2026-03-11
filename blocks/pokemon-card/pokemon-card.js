@@ -1,4 +1,5 @@
 export default async function decorate(block) {
+ console.log("pokemon-card loaded");
   // 1. Extraemos el nombre del Pokémon de la segunda fila de tu tabla
   const pokemonName = block.textContent.trim().toLowerCase() || 'pikachu';
 
