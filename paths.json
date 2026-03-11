@@ -1,7 +1,6 @@
 {
   "mappings": [
-    "/content/test-poc/:/",
-    "/content/test-poc/configuration:/.helix/config.json",
-    "/content/test-poc/metadata:/metadata.json"
-  ]
+    "/ /index"
+  ],
+  "includes": []
 }
